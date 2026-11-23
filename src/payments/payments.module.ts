@@ -36,6 +36,7 @@ import { PrometheusModule } from '../prometheus/prometheus.module';
     PrometheusModule,
     forwardRef(() => AmlModule),
     SettlementsModule,
+    SorobanModule,
   ],
   controllers: [PaymentsController, PublicPaymentController, DisputesController],
   providers: [PaymentsService, DisputesService, IdempotencyInterceptor, PaymentEscrowService, PaymentsSorobanListener, TransactionLimitsService],
