@@ -12,6 +12,7 @@ import {
 import { Merchant } from '../../merchants/entities/merchant.entity';
 import { Settlement } from '../../settlements/entities/settlement.entity';
 import { numericColumnTransformer } from '../../database/numeric-column.transformer';
+import { encryptedColumnTransformer } from '../../security/encrypted-column.transformer';
 
 export enum PaymentStatus {
   PENDING = 'pending',
@@ -81,7 +82,11 @@ export class Payment {
   @Column({ nullable: true })
   description: string;
 
-  @Column({ nullable: true })
+  @Column({
+    type: 'text',
+    nullable: true,
+    transformer: encryptedColumnTransformer('payments.customerEmail'),
+  })
   customerEmail: string;
 
   @Column({ type: 'jsonb', nullable: true })

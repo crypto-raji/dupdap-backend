@@ -25,6 +25,8 @@ import { IdempotencyInterceptor } from './idempotency.interceptor';
 import { Auditable } from '../audit/decorators/auditable.decorator';
 import { TransactionLimitFilter } from './transaction-limit.filter';
 
+import { maskEmail } from './dto/public-payment-view.dto';
+
 @ApiTags('payments')
 @ApiBearerAuth('bearer')
 @ApiSecurity('api-key')
