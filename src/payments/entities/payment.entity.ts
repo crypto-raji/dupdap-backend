@@ -32,6 +32,7 @@ export enum PaymentNetwork {
 @Entity('payments')
 @Index(['merchantId', 'status'])
 @Index(['merchantId', 'createdAt'])
+@Index(['status', 'expiresAt'])
 export class Payment {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -98,6 +99,7 @@ export class Payment {
   @Column({ nullable: true })
   settlementCurrency: string;
 
+  @Index()
   @Column({ nullable: true })
   expiresAt: Date;
 
